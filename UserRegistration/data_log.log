@@ -6,3 +6,25 @@
 2022-10-12 11:51:21,812 (Validate password rule-2) INFO Password validated successfully: Shivaraj
 2022-10-12 11:57:29,354 (Validate password rule-3) INFO Password validated successfully: Shiva123
 2022-10-12 12:02:02,339 (Validate password rule-4) INFO Password validated successfully: Shiva123@
+2022-10-12 12:07:05,081 (Validate email samples) INFO email validated successfully: abc@yahoo.com
+2022-10-12 12:07:05,083 (Validate email samples) INFO email validated successfully: abc-100@yahoo.com
+2022-10-12 12:07:05,084 (Validate email samples) INFO email validated successfully: abc.100@yahoo.com
+2022-10-12 12:07:05,086 (Validate email samples) INFO email validated successfully: abc111@abc.com
+2022-10-12 12:07:05,087 (Validate email samples) INFO email validated successfully: abc-100@abc.net
+2022-10-12 12:07:05,089 (Validate email samples) INFO email validated successfully: abc.100@abc.com.au
+2022-10-12 12:07:05,090 (Validate email samples) INFO email validated successfully: abc@1.com
+2022-10-12 12:07:05,092 (Validate email samples) INFO email validated successfully: abc@gmail.com.com
+2022-10-12 12:07:05,093 (Validate email samples) INFO email validated successfully: abc+100@gmail.com
+2022-10-12 12:07:05,095 (Validate email samples) INFO Please re-enter the valid email
+2022-10-12 12:07:05,096 (Validate email samples) INFO Please re-enter the valid email
+2022-10-12 12:07:05,097 (Validate email samples) INFO Please re-enter the valid email
+2022-10-12 12:07:05,098 (Validate email samples) INFO Please re-enter the valid email
+2022-10-12 12:07:05,100 (Validate email samples) INFO Please re-enter the valid email
+2022-10-12 12:07:05,101 (Validate email samples) INFO Please re-enter the valid email
+2022-10-12 12:07:05,102 (Validate email samples) INFO Please re-enter the valid email
+2022-10-12 12:07:05,103 (Validate email samples) INFO Please re-enter the valid email
+2022-10-12 12:07:05,105 (Validate email samples) INFO Please re-enter the valid email
+2022-10-12 12:07:05,106 (Validate email samples) INFO Please re-enter the valid email
+2022-10-12 12:07:05,107 (Validate email samples) INFO Please re-enter the valid email
+2022-10-12 12:07:05,108 (Validate email samples) INFO Please re-enter the valid email
+2022-10-12 12:07:05,109 (Validate email samples) INFO Please re-enter the valid email
