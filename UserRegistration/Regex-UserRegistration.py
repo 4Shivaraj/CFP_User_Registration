@@ -3,14 +3,14 @@
     @Date: 10-10-2022
     @Last Modified by: Shivaraj
     @Last Modified date: 11-10-2022
-    @Title: Rule3   – Should have at least 1 numeric number in the password 
-            NOTE    – All rules must be passed
+    @Title: Rule4 – Has exactly 1 Special Character
+            - NOTE – All rules must be passed
 '''
 
 import re
 from data_log import get_logger
 
-lg = get_logger(name="(Validate password rule-3)", file_name="data_log.log")
+lg = get_logger(name="(Validate password rule-4)", file_name="data_log.log")
 
 
 class UserRegistration:
@@ -21,10 +21,10 @@ class UserRegistration:
         self.regex_name = '^[A-Z][a-z]{2,}$'
         self.regex_email_id = '^[a-zA-Z0-9_.]+@[a-zA-Z0-9-]+\.[a-zA-z0-9-.]+$'
         self.regex_phone_no = '^[0-9]{2}\s+[6-9][0-9]{9}$'
-        self.regex_password = '^(?=.*[A-Z])(?=.*[0-9])[A-Za-z0-9]{8,}$'
+        self.regex_password = '^(?=.*[A-Z])(?=.*[0-9])[A-Za-z0-9]{7,}[!@#$%^&*()_+=|\{};:"?/.<>,]{1}$'
 
-        # password:             S                   123             hivaraj}
-        #                       r'(?=.*[A-Z])       (?=.*[0-9])     [A-Za-z0-9]{8,}
+        # password:     S                   123             hivaraj             @
+        #               r'(?=.*[A-Z])       (?=.*[0-9])     [A-Za-z0-9]{7,}     [!@#$%^&*()_+=|\{};:"?/.<>,]{1}
 
     def get_first_name(self, first_name):
         """
@@ -43,7 +43,7 @@ class UserRegistration:
                 lg.info(
                     "Please re-enter the first name with name starts with capital and has minimum 3 characters")
         except Exception as e:
-            lg.exception(e)
+            lg.error(e)
 
     def get_last_name(self, last_name):
         """
@@ -62,7 +62,7 @@ class UserRegistration:
                 lg.info(
                     "Please re-enter the last name with name starts with capital and has minimum 3 characters")
         except Exception as e:
-            lg.exception(e)
+            lg.error(e)
 
     def get_email(self, email):
         """
