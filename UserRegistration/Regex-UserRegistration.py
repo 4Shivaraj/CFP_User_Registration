@@ -3,20 +3,18 @@
     @Date: 10-10-2022
     @Last Modified by: Shivaraj
     @Last Modified date: 11-10-2022
-    @Title: As a User need to follow pre -defined Password rules.
-            Rule1   – minimum 8 Characters - 
+    @Title: Rule2   – Should have at least 1 Upper Case 
             NOTE    – All rules must be passed
 '''
 
 
-import re
 from data_log import get_logger
+import re
 
-lg = get_logger(name="(Validate password rule-1)", file_name="data_log.log")
+lg = get_logger(name="(Validate password rule-2)", file_name="data_log.log")
 
 
 class UserRegistration:
-
     def __init__(self):
         """
         Container for regex pattern and valdating user input with this patterns.
@@ -24,10 +22,11 @@ class UserRegistration:
         self.regex_name = '^[A-Z][a-z]{2,}$'
         self.regex_email_id = '^[a-zA-Z0-9_.]+@[a-zA-Z0-9-]+\.[a-zA-z0-9-.]+$'
         self.regex_phone_no = '^[0-9]{2}\s+[6-9][0-9]{9}$'
-        self.regex_password = '^[a-zA-Z0-9]{8,}$'
+        # Look ahead =(?= pattern)
+        self.regex_password = '^(?=.*[A-Z])[A-Za-z0-9]{8,}$'
 
-        # password:             shivaraj123
-        #                       r'[a-zA-Z0-9]{8,}'
+        # password:             S                   hiva123
+        #                       r'(?=.*[A-Z])       [A-Za-z0-9]{8,}
 
     def get_first_name(self, first_name):
         """
