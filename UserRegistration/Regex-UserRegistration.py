@@ -3,15 +3,14 @@
     @Date: 10-10-2022
     @Last Modified by: Shivaraj
     @Last Modified date: 11-10-2022
-    @Title: Rule2   – Should have at least 1 Upper Case 
+    @Title: Rule3   – Should have at least 1 numeric number in the password 
             NOTE    – All rules must be passed
 '''
 
-
-from data_log import get_logger
 import re
+from data_log import get_logger
 
-lg = get_logger(name="(Validate password rule-2)", file_name="data_log.log")
+lg = get_logger(name="(Validate password rule-3)", file_name="data_log.log")
 
 
 class UserRegistration:
@@ -22,11 +21,10 @@ class UserRegistration:
         self.regex_name = '^[A-Z][a-z]{2,}$'
         self.regex_email_id = '^[a-zA-Z0-9_.]+@[a-zA-Z0-9-]+\.[a-zA-z0-9-.]+$'
         self.regex_phone_no = '^[0-9]{2}\s+[6-9][0-9]{9}$'
-        # Look ahead =(?= pattern)
-        self.regex_password = '^(?=.*[A-Z])[A-Za-z0-9]{8,}$'
+        self.regex_password = '^(?=.*[A-Z])(?=.*[0-9])[A-Za-z0-9]{8,}$'
 
-        # password:             S                   hiva123
-        #                       r'(?=.*[A-Z])       [A-Za-z0-9]{8,}
+        # password:             S                   123             hivaraj}
+        #                       r'(?=.*[A-Z])       (?=.*[0-9])     [A-Za-z0-9]{8,}
 
     def get_first_name(self, first_name):
         """
