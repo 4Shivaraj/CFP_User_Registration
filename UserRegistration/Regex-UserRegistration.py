@@ -3,14 +3,13 @@
     @Date: 10-10-2022
     @Last Modified by: Shivaraj
     @Last Modified date: 11-10-2022
-    @Title: Rule4 – Has exactly 1 Special Character
-            - NOTE – All rules must be passed
+    @Title: Should clear all email samples provided separately
 '''
 
 import re
 from data_log import get_logger
 
-lg = get_logger(name="(Validate password rule-4)", file_name="data_log.log")
+lg = get_logger(name="(Validate email samples)", file_name="data_log.log")
 
 
 class UserRegistration:
@@ -22,9 +21,10 @@ class UserRegistration:
         self.regex_email_id = '^[a-zA-Z0-9_.]+@[a-zA-Z0-9-]+\.[a-zA-z0-9-.]+$'
         self.regex_phone_no = '^[0-9]{2}\s+[6-9][0-9]{9}$'
         self.regex_password = '^(?=.*[A-Z])(?=.*[0-9])[A-Za-z0-9]{7,}[!@#$%^&*()_+=|\{};:"?/.<>,]{1}$'
+        self.regex_email_samples = '^[a-zA-Z0-9]+([._+-][a-zA-Z0-9]{2,})*@[a-zA-Z0-9]{1,}\.[a-zA-Z]{2,4}(\.[a-zA-z]{2,3})?$'
 
-        # password:     S                   123             hivaraj             @
-        #               r'(?=.*[A-Z])       (?=.*[0-9])     [A-Za-z0-9]{7,}     [!@#$%^&*()_+=|\{};:"?/.<>,]{1}
+        # email_samples:     abc             .100                        @abc                .com                .au
+        #                    r'[a-zA-Z0-9]   +([._+-][a-zA-Z0-9]{2,})    *@[a-zA-Z0-9]{1,}   \.[a-zA-Z]{2,4}     (\.[a-zA-z]{2,3})?
 
     def get_first_name(self, first_name):
         """
@@ -43,7 +43,7 @@ class UserRegistration:
                 lg.info(
                     "Please re-enter the first name with name starts with capital and has minimum 3 characters")
         except Exception as e:
-            lg.error(e)
+            lg.exception(e)
 
     def get_last_name(self, last_name):
         """
@@ -62,7 +62,7 @@ class UserRegistration:
                 lg.info(
                     "Please re-enter the last name with name starts with capital and has minimum 3 characters")
         except Exception as e:
-            lg.error(e)
+            lg.exception(e)
 
     def get_email(self, email):
         """
@@ -121,13 +121,33 @@ class UserRegistration:
         except Exception as e:
             lg.exception(e)
 
+    def get_email_samples(self, email_samples):
+        """
+        Description:
+            Takes the parameter None but return the validation of email samples after matching regex pattern.
+        Parameter:
+            Passed parameter is None
+        Return:
+            Returns nothing but print the validation of email samples after matching regex pattern.
+        """
+        try:
+            matches = re.search(self.regex_email_samples, email_samples)
+            if matches:
+                lg.info(f'email validated successfully: {email_samples}')
+            else:
+                lg.info(
+                    "Please re-enter the valid email")
+                return 'Invalid email_id'
+        except Exception as e:
+            lg.exception(e)
+
 
 if __name__ == "__main__":
     try:
         user_object = UserRegistration()
 
         while True:
-            print("Enter the choice: \n1.Validate first-name\n2.Validate last-name\n3.Validate email-id\n4.Validate Phone number\n5.Validate password\n0.Exit")
+            print("Enter the choice: \n1.Validate first-name\n2.Validate last-name\n3.Validate email-id\n4.Validate Phone number\n5.Validate password\n6.Validate email samples\n0.Exit")
             choice = int(input())
             if choice == 1:
                 first_name = input("Enter the first name: ")
@@ -144,6 +164,21 @@ if __name__ == "__main__":
             elif choice == 5:
                 password = input("Enter the password: ")
                 user_object.get_password(password)
+            elif choice == 6:
+                valid_email = ['abc@yahoo.com', 'abc-100@yahoo.com', 'abc.100@yahoo.com', 'abc111@abc.com',
+                               'abc-100@abc.net', 'abc.100@abc.com.au', 'abc@1.com', 'abc@gmail.com.com',
+                               'abc+100@gmail.com']
+                invalid_email = ['abc', 'abc@.com.my', 'abc123@gmail.a', 'abc123@.com', 'abc123@.com.com',
+                                 '.abc@abc.com',
+                                 'abc()\* @gmail.com', 'abc@%\*.com', 'abc..2002@gmail.com', 'abc.@gmail.com',
+                                 'abc@abc@gmail.com', 'abc@gmail.com.1a', 'abc@gmail.com.aa.au']
+                print('List of valid emails')
+                for email in valid_email:
+                    user_object.get_email_samples(email)
+
+                print('List of in-valid emails')
+                for email in invalid_email:
+                    user_object.get_email_samples(email)
             else:
                 break
     except Exception as e:
