@@ -3,3 +3,4 @@
 2022-10-12 11:28:30,980 (Validate email) INFO email validated successfully: 4shivaraj.gowda@gmail.com
 2022-10-12 11:33:08,767 (Validate phone number) INFO Phone number validated successfully: 91 8618199771
 2022-10-12 11:38:10,712 (Validate password rule-1) INFO Password validated successfully: shivaraj
+2022-10-12 11:51:21,812 (Validate password rule-2) INFO Password validated successfully: Shivaraj
