@@ -9,7 +9,7 @@
 import re
 from data_log import get_logger
 
-lg = get_logger(name="(Validate email samples)", file_name="data_log.log")
+lg = get_logger(name="(For Test Case)", file_name="data_log.log")
 
 
 class UserRegistration:
@@ -38,10 +38,9 @@ class UserRegistration:
         try:
             matches = re.search(self.regex_name, first_name)
             if matches:
-                lg.info(f'First name validated successfully: {first_name}')
+                return first_name
             else:
-                lg.info(
-                    "Please re-enter the first name with name starts with capital and has minimum 3 characters")
+                return False
         except Exception as e:
             lg.exception(e)
 
@@ -57,10 +56,9 @@ class UserRegistration:
         try:
             matches = re.search(self.regex_name, last_name)
             if matches:
-                lg.info(f'last name validated successfully: {last_name}')
+                return last_name
             else:
-                lg.info(
-                    "Please re-enter the last name with name starts with capital and has minimum 3 characters")
+                return False
         except Exception as e:
             lg.exception(e)
 
@@ -76,10 +74,9 @@ class UserRegistration:
         try:
             matches = re.search(self.regex_email_id, email)
             if matches:
-                lg.info(f'email validated successfully: {email}')
+                return email
             else:
-                lg.info(
-                    "Please re-enter the valid email")
+                return False
         except Exception as e:
             lg.exception(e)
 
@@ -95,10 +92,9 @@ class UserRegistration:
         try:
             matches = re.search(self.regex_phone_no, phone_num)
             if matches:
-                lg.info(f'Phone number validated successfully: {phone_num}')
+                return phone_num
             else:
-                lg.info(
-                    "Please re-enter the valid phone number")
+                return False
         except Exception as e:
             lg.exception(e)
 
@@ -114,10 +110,9 @@ class UserRegistration:
         try:
             matches = re.search(self.regex_password, password)
             if matches:
-                lg.info(f'Password validated successfully: {password}')
+                return password
             else:
-                lg.info(
-                    "Please re-enter the valid password")
+                return False
         except Exception as e:
             lg.exception(e)
 
@@ -133,11 +128,9 @@ class UserRegistration:
         try:
             matches = re.search(self.regex_email_samples, email_samples)
             if matches:
-                lg.info(f'email validated successfully: {email_samples}')
+                return email_samples
             else:
-                lg.info(
-                    "Please re-enter the valid email")
-                return 'Invalid email_id'
+                return False
         except Exception as e:
             lg.exception(e)
 
