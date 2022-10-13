@@ -2,7 +2,7 @@
     @Author: Shivaraj
     @Date: 10-10-2022
     @Last Modified by: Shivaraj
-    @Last Modified date: 11-10-2022
+    @Last Modified date: 13-10-2022
     @Title: Rule3   – Should have at least 1 numeric number in the password 
             NOTE    – All rules must be passed
 '''
@@ -15,9 +15,6 @@ lg = get_logger(name="(Validate password rule-3)", file_name="data_log.log")
 
 class UserRegistration:
     def __init__(self):
-        """
-        Container for regex pattern and valdating user input with this patterns.
-        """
         self.regex_name = '^[A-Z][a-z]{2,}$'
         self.regex_email_id = '^[a-zA-Z0-9_.]+@[a-zA-Z0-9-]+\.[a-zA-z0-9-.]+$'
         self.regex_phone_no = '^[0-9]{2}\s+[6-9][0-9]{9}$'
@@ -29,11 +26,11 @@ class UserRegistration:
     def get_first_name(self, first_name):
         """
         Description:
-            Takes the parameter None but return the validation of first name after matching regex pattern.
+            This function is used to check whether the first name starts with Cap and has minimum 3 characters
         Parameter:
-            Passed parameter is None
+            first_name: The first_name to be checked
         Return:
-            Returns nothing but print the validation of first name after matching regex pattern..
+            None
         """
         try:
             matches = re.search(self.regex_name, first_name)
@@ -48,11 +45,11 @@ class UserRegistration:
     def get_last_name(self, last_name):
         """
         Description:
-            Takes the parameter None but return the validation of last name after matching regex pattern.
+            This function is used to check whether the last name starts with Cap and has minimum 3 characters
         Parameter:
-            Passed parameter is None
+            last_name: The last_name to be checked
         Return:
-            Returns nothing but print the validation of last name after matching regex pattern..
+            None
         """
         try:
             matches = re.search(self.regex_name, last_name)
@@ -67,11 +64,11 @@ class UserRegistration:
     def get_email(self, email):
         """
         Description:
-            Takes the parameter None but return the validation of email id after matching regex pattern.
+            This function is used to check for valid email
         Parameter:
-            Passed parameter is None
+            email: The email to be checked
         Return:
-            Returns nothing but print the validation of email id after matching regex pattern.
+            None
         """
         try:
             matches = re.search(self.regex_email_id, email)
@@ -86,11 +83,11 @@ class UserRegistration:
     def get_phone_number(self, phone_num):
         """
         Description:
-            Takes the parameter None but return the validation of phone number after matching regex pattern.
+            This function is used to check for valid phone number
         Parameter:
-            Passed parameter is None
+            phone_num: The phone_num to be checked
         Return:
-            Returns nothing but print the validation of phone number after matching regex pattern.
+            None
         """
         try:
             matches = re.search(self.regex_phone_no, phone_num)
@@ -105,11 +102,11 @@ class UserRegistration:
     def get_password(self, password):
         """
         Description:
-            Takes the parameter None but return the validation of password after matching regex pattern.
+            This function is used to check for valid password
         Parameter:
-            Passed parameter is None
+            password: The password to be checked
         Return:
-            Returns nothing but print the validation of password after matching regex pattern.
+            None
         """
         try:
             matches = re.search(self.regex_password, password)
@@ -127,7 +124,9 @@ if __name__ == "__main__":
         user_object = UserRegistration()
 
         while True:
-            print("Enter the choice: \n1.Validate first-name\n2.Validate last-name\n3.Validate email-id\n4.Validate Phone number\n5.Validate password\n0.Exit")
+            print(
+                "Enter the choice: \n1.Validate first-name\n2.Validate last-name\n3.Validate email-id\n4.Validate "
+                "Phone number\n5.Validate password\n0.Exit")
             choice = int(input())
             if choice == 1:
                 first_name = input("Enter the first name: ")
