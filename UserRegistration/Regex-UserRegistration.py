@@ -123,7 +123,7 @@ class UserRegistration:
     def get_email_samples(self, email_samples):
         """
         Description:
-            TThis function is used to check for valid email
+            This function is used to check for valid email
         Parameter:
             email_samples: The email_samples to be checked
         Return:
