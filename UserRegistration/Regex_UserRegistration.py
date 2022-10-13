@@ -2,7 +2,7 @@
     @Author: Shivaraj
     @Date: 10-10-2022
     @Last Modified by: Shivaraj
-    @Last Modified date: 11-10-2022
+    @Last Modified date: 13-10-2022
     @Title: Should clear all email samples provided separately
 '''
 
@@ -14,26 +14,25 @@ lg = get_logger(name="(For Test Case)", file_name="data_log.log")
 
 class UserRegistration:
     def __init__(self):
-        """
-        Container for regex pattern and valdating user input with this patterns.
-        """
         self.regex_name = '^[A-Z][a-z]{2,}$'
         self.regex_email_id = '^[a-zA-Z0-9_.]+@[a-zA-Z0-9-]+\.[a-zA-z0-9-.]+$'
         self.regex_phone_no = '^[0-9]{2}\s+[6-9][0-9]{9}$'
         self.regex_password = '^(?=.*[A-Z])(?=.*[0-9])[A-Za-z0-9]{7,}[!@#$%^&*()_+=|\{};:"?/.<>,]{1}$'
-        self.regex_email_samples = '^[a-zA-Z0-9]+([._+-][a-zA-Z0-9]{2,})*@[a-zA-Z0-9]{1,}\.[a-zA-Z]{2,4}(\.[a-zA-z]{2,3})?$'
+        self.regex_email_samples = '^[a-zA-Z0-9]+([._+-][a-zA-Z0-9]{2,})*@[a-zA-Z0-9]{1,}\.[a-zA-Z]{2,4}(\.[a-zA-z]{' \
+                                   '2,3})?$ '
 
-        # email_samples:     abc             .100                        @abc                .com                .au
-        #                    r'[a-zA-Z0-9]   +([._+-][a-zA-Z0-9]{2,})    *@[a-zA-Z0-9]{1,}   \.[a-zA-Z]{2,4}     (\.[a-zA-z]{2,3})?
+        # email_samples:
+        # abc             .100                        @abc                .com                .au r'[
+        # a-zA-Z0-9]   +([._+-][a-zA-Z0-9]{2,})    *@[a-zA-Z0-9]{1,}   \.[a-zA-Z]{2,4}     (\.[a-zA-z]{2,3})?
 
     def get_first_name(self, first_name):
         """
         Description:
-            Takes the parameter None but return the validation of first name after matching regex pattern.
+             This function is used to check whether the first name starts with Cap and has minimum 3 characters
         Parameter:
-            Passed parameter is None
+            first_name: The first_name to be checked
         Return:
-            Returns nothing but print the validation of first name after matching regex pattern..
+            Returns first_name if its valid else returns False
         """
         try:
             matches = re.search(self.regex_name, first_name)
@@ -47,11 +46,11 @@ class UserRegistration:
     def get_last_name(self, last_name):
         """
         Description:
-            Takes the parameter None but return the validation of last name after matching regex pattern.
+            This function is used to check whether the last name starts with Cap and has minimum 3 characters
         Parameter:
-            Passed parameter is None
+            last_name: The last_name to be checked
         Return:
-            Returns nothing but print the validation of last name after matching regex pattern..
+            Returns last_name if its valid else returns False
         """
         try:
             matches = re.search(self.regex_name, last_name)
@@ -65,11 +64,11 @@ class UserRegistration:
     def get_email(self, email):
         """
         Description:
-            Takes the parameter None but return the validation of email id after matching regex pattern.
+            This function is used to check for valid email
         Parameter:
-            Passed parameter is None
+            email: The email to be checked
         Return:
-            Returns nothing but print the validation of email id after matching regex pattern.
+            Returns email if its valid else returns False
         """
         try:
             matches = re.search(self.regex_email_id, email)
@@ -83,11 +82,11 @@ class UserRegistration:
     def get_phone_number(self, phone_num):
         """
         Description:
-            Takes the parameter None but return the validation of phone number after matching regex pattern.
+            This function is used to check for valid phone number
         Parameter:
-            Passed parameter is None
+            phone_num: The phone_num to be checked
         Return:
-            Returns nothing but print the validation of phone number after matching regex pattern.
+            Returns phone_num if its valid else returns False
         """
         try:
             matches = re.search(self.regex_phone_no, phone_num)
@@ -101,11 +100,11 @@ class UserRegistration:
     def get_password(self, password):
         """
         Description:
-            Takes the parameter None but return the validation of password after matching regex pattern.
+            This function is used to check for valid password
         Parameter:
-            Passed parameter is None
+            password: The password to be checked
         Return:
-            Returns nothing but print the validation of password after matching regex pattern.
+            Returns password if its valid else returns False
         """
         try:
             matches = re.search(self.regex_password, password)
@@ -119,11 +118,11 @@ class UserRegistration:
     def get_email_samples(self, email_samples):
         """
         Description:
-            Takes the parameter None but return the validation of email samples after matching regex pattern.
+            This function is used to check for valid password
         Parameter:
-            Passed parameter is None
+            email_samples: The email_samples to be checked
         Return:
-            Returns nothing but print the validation of email samples after matching regex pattern.
+            Returns email_samples if its valid else returns False
         """
         try:
             matches = re.search(self.regex_email_samples, email_samples)
@@ -140,7 +139,8 @@ if __name__ == "__main__":
         user_object = UserRegistration()
 
         while True:
-            print("Enter the choice: \n1.Validate first-name\n2.Validate last-name\n3.Validate email-id\n4.Validate Phone number\n5.Validate password\n6.Validate email samples\n0.Exit")
+            print("Enter the choice: \n1.Validate first-name\n2.Validate last-name\n3.Validate email-id\n4.Validate "
+                  "Phone number\n5.Validate password\n6.Validate email samples\n0.Exit")
             choice = int(input())
             if choice == 1:
                 first_name = input("Enter the first name: ")
